@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Fair Trade Coffee</title>
+</head>
+<style>
+  input {
+    display: block;
+    margin-bottom: 12px;
+  }
+</style>
+
+
+<body>
+  <h1>Fair Trade Coffee supply chain demo</h1>
+  <p>Prove the authenticity of coffee using the Ethereum blockchain.</p>
+
+  <div id="ftc-harvest">
+    <h2>Product Overview</h2>
+    <div class="form-group">
+      <label for="sku">SKU</label>
+      <input type="number" id="sku" name="sku" value=1>
+      <br>
+      <label for="upc">UPC</label>
+      <input type="number" id="upc" name="upc" value=1>
+      <br>
+      <label for="ownerID">Current Owner ID</label>
+      <input type="text" id="ownerID" name="ownerID" value="" size="50">
+      <br>
+      <div class=button-div>
+        <button onclick="App.fetchData1()">Fetch Data 1</button>
+        <button onclick="App.fetchData2()">Fetch Data 2</button>
+      </div>
+      <div class=button-div>
+        <p id="ftc-item"></p>
+        <p id="ftc-item2"></p>
+      </div>
+    </div>
+    <div class=form-break></div>
+
+    <div>
+      <h2>Role management</h2>
+      <div>
+        <h4>Add roles</h4>
+        <label for="addFarmerID">Farmer ID</label>
+        <input type="text" id="addFarmerID" name="addFarmerID" value="" size="50">
+        <label for="addDistributorID">Distributor ID</label>
+        <input type="text" id="addDistributorID" name="addDistributorID" value="" size="50">
+        <label for="addRetailerID">Retailer ID</label>
+        <input type="text" id="addRetailerID" name="addRetailerID" value="" size="50">
+        <label for="addConsumerID">Consumer ID</label>
+        <input type="text" id="addConsumerID" name="addConsumerID" value="" size="50">
+        <button onclick="App.addRoles()">Add Roles</button>
+        <p id="add-role-info"></p>
+      </div>
+      <!--  -->
+      <br>
+      <div>
+        <h4>Check if user has a role</h4>
+        <label for="userID">User id</label>
+        <input type="text" id="userID" name="userID" value="" size="50">
+        <label for="roleID">Role (farmer, distributor, retailer, consumer)</label>
+        <input type="text" id="roleID" name="roleID" value="farmer">
+        <button onclick="App.hasRole()">Check Role</button>
+        <p id="check-role-item"></p>
+      </div>
+    </div>
+
+
+    <h2>Farm Details</h2>
+    <div class="form-group">
+      <label for="originFarmName">Farm Name</label>
+      <input type="text" id="originFarmName" name="originFarmName" value="John Doe">
+      <label for="originFarmInformation">Farm Information</label>
+      <input type="text" id="originFarmInformation" name="originFarmInformation" value="Yarra Valley">
+      Farm Latitude
+      <br>
+      <input type="text" id="originFarmLatitude" name="originFarmLatitude" value="-38.239770">
+      Farm Longitude
+      <br>
+      <input type="text" id="originFarmLongitude" name="originFarmLongitude" value="144.341490">
+      Product Notes
+      <br>
+      <input type="text" id="productNotes" name="productNotes" value="Best beans for Espresso" size="60">
+      <button onclick="App.harvest()">Harvest</button>
+      <button onclick="App.processItem()">Process</button>
+      <button onclick="App.packItem()">Pack</button>
+
+      <br><br>
+      Price
+      <br>
+      <input type="text" id="price" name="price" value="41">
+      <button onclick="App.sellItem()">Sell Item</button>
+
+    </div>
+
+
+    <div class="form-group">
+      <h2>Distributor's zone</h2>
+      Payment
+      <br>
+      <input type="number" id="payment" name="payment" value=1>ETH<br><br>
+      <button onclick="App.buyItem()"">Buy</button>
+      <button onclick="App.shipItem()">Ship</button>
+
+      <h2>Retailer's zone</h2>
+      <button onclick="App.receiveItem()">Receive</button>
+      <h2>Consumer's zone</h2>
+      <button onclick="App.purchaseItem()">Purchase</button>
+    </div>
+
+  </div>
+
+
+  <h2>Transaction History<span id="ftc-history"></span></h2>
+  <div>
+    <ul id="ftc-events">
+      <!-- Events will appear here from app.js -->
+    </ul>
+    <br>
+    <hr>
+  </div>
+
+
+
+  <script src="index.js"></script>
+</body>
+
+</html>
